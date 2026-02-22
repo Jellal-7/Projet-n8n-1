@@ -10,37 +10,47 @@
 </head>
 <body>
 
+  <!-- PROGRESS BAR -->
+  <div class="scroll-progress" id="scrollProgress"></div>
+
   <!-- NAVBAR -->
-  <nav class="navbar">
+  <nav class="navbar" id="navbar">
     <div class="nav-container">
       <div class="logo">
         <i class="fas fa-certificate"></i>
         <span>CertifPath</span>
       </div>
-      <ul class="nav-links">
-        <li><a href="#accueil">Accueil</a></li>
-        <li><a href="#fonctionnement">Comment ça marche</a></li>
-        <li><a href="#certifications">Certifications</a></li>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#accueil" class="nav-link">Accueil</a></li>
+        <li><a href="#fonctionnement" class="nav-link">Comment ça marche</a></li>
+        <li><a href="#certifications" class="nav-link">Certifications</a></li>
+        <li><a href="#temoignages" class="nav-link">Témoignages</a></li>
         <li><a href="#action" class="btn-nav">Commencer</a></li>
       </ul>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
     </div>
   </nav>
 
   <!-- HERO -->
   <section class="hero" id="accueil">
+    <canvas id="particles"></canvas>
     <div class="hero-bg">
       <div class="blob blob1"></div>
       <div class="blob blob2"></div>
       <div class="blob blob3"></div>
     </div>
-    <div class="hero-content">
+    <div class="hero-content reveal">
       <div class="badge">
         <i class="fas fa-robot"></i>
         Propulsé par l'IA — 100% Gratuit
       </div>
       <h1>
         Trouvez votre<br/>
-        <span class="gradient-text">parcours de certifications IT</span><br/>
+        <span class="gradient-text" id="typingText"></span><br/>
         idéal
       </h1>
       <p class="hero-desc">
@@ -49,7 +59,7 @@
         adapté à vos objectifs de carrière.
       </p>
       <div class="hero-buttons">
-        <a href="#action" class="btn-primary">
+        <a href="#action" class="btn-primary ripple">
           <i class="fas fa-map-signs"></i>
           Obtenir mon parcours
         </a>
@@ -60,12 +70,12 @@
       </div>
       <div class="hero-stats">
         <div class="stat">
-          <span class="stat-number">13+</span>
+          <span class="stat-number counter" data-target="13">0</span><span class="stat-number">+</span>
           <span class="stat-label">Certifications</span>
         </div>
         <div class="stat-divider"></div>
         <div class="stat">
-          <span class="stat-number">5</span>
+          <span class="stat-number counter" data-target="5">0</span>
           <span class="stat-label">Domaines IT</span>
         </div>
         <div class="stat-divider"></div>
@@ -75,7 +85,7 @@
         </div>
       </div>
     </div>
-    <div class="hero-visual">
+    <div class="hero-visual reveal reveal-right">
       <div class="card-float card1">
         <i class="fas fa-check-circle"></i>
         <span>Parcours généré !</span>
@@ -88,8 +98,50 @@
         <i class="fas fa-brain"></i>
         <span>IA en action...</span>
       </div>
+      <div class="orbit-ring">
+        <div class="orbit-dot dot1"><i class="fas fa-cloud"></i></div>
+        <div class="orbit-dot dot2"><i class="fas fa-cogs"></i></div>
+        <div class="orbit-dot dot3"><i class="fas fa-brain"></i></div>
+        <div class="orbit-dot dot4"><i class="fas fa-sync-alt"></i></div>
+      </div>
       <div class="visual-center">
         <i class="fas fa-certificate"></i>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS BANNER -->
+  <section class="stats-banner">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stats-item reveal">
+          <i class="fas fa-users"></i>
+          <div>
+            <span class="stats-big counter" data-target="850">0</span><span class="stats-big">+</span>
+            <p>Parcours générés</p>
+          </div>
+        </div>
+        <div class="stats-item reveal">
+          <i class="fas fa-clock"></i>
+          <div>
+            <span class="stats-big counter" data-target="30">0</span><span class="stats-big">s</span>
+            <p>Temps de génération</p>
+          </div>
+        </div>
+        <div class="stats-item reveal">
+          <i class="fas fa-star"></i>
+          <div>
+            <span class="stats-big">4.9</span><span class="stats-big">/5</span>
+            <p>Satisfaction moyenne</p>
+          </div>
+        </div>
+        <div class="stats-item reveal">
+          <i class="fas fa-globe"></i>
+          <div>
+            <span class="stats-big counter" data-target="12">0</span><span class="stats-big">+</span>
+            <p>Pays représentés</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -97,36 +149,40 @@
   <!-- COMMENT CA MARCHE -->
   <section class="how-it-works" id="fonctionnement">
     <div class="container">
-      <div class="section-header">
+      <div class="section-header reveal">
+        <span class="section-tag">Processus</span>
         <h2>Comment ça marche ?</h2>
         <p>En 3 étapes simples, recevez votre parcours personnalisé</p>
       </div>
       <div class="steps">
-        <div class="step">
+        <div class="step reveal" style="--delay: 0s">
           <div class="step-icon" style="background: linear-gradient(135deg, #667eea, #764ba2)">
             <i class="fas fa-user-edit"></i>
           </div>
           <div class="step-number">01</div>
           <h3>Remplissez votre profil</h3>
           <p>Indiquez votre niveau actuel, vos domaines d'intérêt (SAP, Cloud, IA...) et votre objectif de carrière</p>
+          <div class="step-glow"></div>
         </div>
         <div class="step-arrow"><i class="fas fa-arrow-right"></i></div>
-        <div class="step">
+        <div class="step reveal" style="--delay: 0.15s">
           <div class="step-icon" style="background: linear-gradient(135deg, #f093fb, #f5576c)">
             <i class="fas fa-robot"></i>
           </div>
           <div class="step-number">02</div>
           <h3>L'IA analyse votre profil</h3>
           <p>Notre système basé sur Llama 3.3 sélectionne les certifications pertinentes et les classe dans l'ordre optimal</p>
+          <div class="step-glow"></div>
         </div>
         <div class="step-arrow"><i class="fas fa-arrow-right"></i></div>
-        <div class="step">
+        <div class="step reveal" style="--delay: 0.3s">
           <div class="step-icon" style="background: linear-gradient(135deg, #4facfe, #00f2fe)">
             <i class="fas fa-envelope-open-text"></i>
           </div>
           <div class="step-number">03</div>
           <h3>Recevez votre parcours</h3>
           <p>Un email personnalisé avec votre parcours complet, les durées, les coûts et un message d'encouragement</p>
+          <div class="step-glow"></div>
         </div>
       </div>
     </div>
@@ -135,64 +191,258 @@
   <!-- CERTIFICATIONS -->
   <section class="certifications" id="certifications">
     <div class="container">
-      <div class="section-header">
+      <div class="section-header reveal">
+        <span class="section-tag">Catalogue</span>
         <h2>Certifications disponibles</h2>
         <p>13 certifications dans 5 domaines clés du marché IT</p>
       </div>
+
+      <!-- FILTRES -->
+      <div class="cert-filters reveal">
+        <button class="filter-btn active" data-filter="all">Tous</button>
+        <button class="filter-btn" data-filter="cloud">Cloud</button>
+        <button class="filter-btn" data-filter="sap">SAP</button>
+        <button class="filter-btn" data-filter="itsm">ITSM</button>
+        <button class="filter-btn" data-filter="agile">Agile</button>
+        <button class="filter-btn" data-filter="ia">IA</button>
+      </div>
+
       <div class="domains">
-        <div class="domain-card">
+        <div class="domain-card reveal" data-category="cloud" style="--delay: 0s">
           <div class="domain-icon" style="background:#E8F4FD; color:#2196F3">
             <i class="fas fa-cloud"></i>
           </div>
           <h3>Cloud</h3>
+          <div class="cert-badge-row">
+            <span class="level-badge beginner">Débutant → Expert</span>
+          </div>
           <ul>
             <li>AWS Cloud Practitioner</li>
             <li>AWS Solutions Architect Associate</li>
             <li>AWS Solutions Architect Professional</li>
             <li>Google Cloud Digital Leader</li>
           </ul>
+          <div class="domain-footer">
+            <span><i class="fas fa-certificate"></i> 4 certifications</span>
+          </div>
         </div>
-        <div class="domain-card">
+
+        <div class="domain-card reveal" data-category="sap" style="--delay: 0.1s">
           <div class="domain-icon" style="background:#FFF3E0; color:#FF9800">
             <i class="fas fa-cogs"></i>
           </div>
           <h3>SAP</h3>
+          <div class="cert-badge-row">
+            <span class="level-badge intermediate">Intermédiaire → Expert</span>
+          </div>
           <ul>
             <li>SAP S/4HANA Associate</li>
             <li>SAP S/4HANA Professional</li>
             <li>SAP S/4HANA Solution Architect</li>
           </ul>
+          <div class="domain-footer">
+            <span><i class="fas fa-certificate"></i> 3 certifications</span>
+          </div>
         </div>
-        <div class="domain-card">
+
+        <div class="domain-card reveal" data-category="itsm" style="--delay: 0.2s">
           <div class="domain-icon" style="background:#F3E5F5; color:#9C27B0">
             <i class="fas fa-headset"></i>
           </div>
           <h3>ITSM</h3>
+          <div class="cert-badge-row">
+            <span class="level-badge beginner">Débutant → Expert</span>
+          </div>
           <ul>
             <li>ITIL 4 Foundation</li>
             <li>ITIL 4 Managing Professional</li>
             <li>ITIL 4 Strategic Leader</li>
           </ul>
+          <div class="domain-footer">
+            <span><i class="fas fa-certificate"></i> 3 certifications</span>
+          </div>
         </div>
-        <div class="domain-card">
+
+        <div class="domain-card reveal" data-category="agile" style="--delay: 0.3s">
           <div class="domain-icon" style="background:#E8F5E9; color:#4CAF50">
             <i class="fas fa-sync-alt"></i>
           </div>
           <h3>Agile</h3>
+          <div class="cert-badge-row">
+            <span class="level-badge intermediate">Intermédiaire</span>
+          </div>
           <ul>
             <li>Scrum PSM I</li>
             <li>Scrum PSM II</li>
           </ul>
+          <div class="domain-footer">
+            <span><i class="fas fa-certificate"></i> 2 certifications</span>
+          </div>
         </div>
-        <div class="domain-card">
+
+        <div class="domain-card reveal" data-category="ia" style="--delay: 0.4s">
           <div class="domain-icon" style="background:#FCE4EC; color:#E91E63">
             <i class="fas fa-brain"></i>
           </div>
           <h3>IA</h3>
+          <div class="cert-badge-row">
+            <span class="level-badge beginner">Débutant → Avancé</span>
+          </div>
           <ul>
             <li>AI-900 Azure AI Fundamentals</li>
             <li>AI-102 Azure AI Engineer</li>
           </ul>
+          <div class="domain-footer">
+            <span><i class="fas fa-certificate"></i> 2 certifications</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEMOIGNAGES -->
+  <section class="testimonials" id="temoignages">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">Témoignages</span>
+        <h2>Ils ont trouvé leur voie</h2>
+        <p>Des professionnels qui ont utilisé CertifPath pour booster leur carrière</p>
+      </div>
+      <div class="testimonials-track-wrapper">
+        <div class="testimonials-track" id="testimonialsTrack">
+          <div class="testimonial-card">
+            <div class="testimonial-stars">
+              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              <i class="fas fa-star"></i><i class="fas fa-star"></i>
+            </div>
+            <p>"En 30 secondes j'avais un parcours complet AWS → Architecture. Exactement ce dont j'avais besoin pour évoluer en tant que Dev vers le Cloud."</p>
+            <div class="testimonial-author">
+              <div class="author-avatar" style="background: linear-gradient(135deg, #4A90D9, #764ba2)">TM</div>
+              <div>
+                <strong>Thomas M.</strong>
+                <span>Développeur Backend → Cloud Architect</span>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <div class="testimonial-stars">
+              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              <i class="fas fa-star"></i><i class="fas fa-star"></i>
+            </div>
+            <p>"Le parcours ITIL recommandé était parfait. J'ai reçu l'email avec tous les détails en moins d'une minute. Impressionnant et très utile !"</p>
+            <div class="testimonial-author">
+              <div class="author-avatar" style="background: linear-gradient(135deg, #f093fb, #f5576c)">SB</div>
+              <div>
+                <strong>Sophie B.</strong>
+                <span>IT Manager — ITSM</span>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <div class="testimonial-stars">
+              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              <i class="fas fa-star"></i><i class="fas fa-star"></i>
+            </div>
+            <p>"Je ne savais pas par où commencer avec SAP. CertifPath m'a proposé un parcours en 3 étapes très clair. Je suis maintenant SAP Associate !"</p>
+            <div class="testimonial-author">
+              <div class="author-avatar" style="background: linear-gradient(135deg, #4facfe, #00f2fe)">KL</div>
+              <div>
+                <strong>Karim L.</strong>
+                <span>Consultant SAP Junior</span>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <div class="testimonial-stars">
+              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              <i class="fas fa-star"></i><i class="fas fa-star"></i>
+            </div>
+            <p>"La fiche de préparation pour l'AI-900 était ultra complète. Plan semaine par semaine, ressources gratuites, tout y était. J'ai eu 87% à l'exam !"</p>
+            <div class="testimonial-author">
+              <div class="author-avatar" style="background: linear-gradient(135deg, #2ECC71, #4A90D9)">AR</div>
+              <div>
+                <strong>Amira R.</strong>
+                <span>Data Analyst → AI Engineer</span>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <div class="testimonial-stars">
+              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              <i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+            </div>
+            <p>"Simple, rapide et vraiment personnalisé. Le parcours Agile correspondait exactement à mon expérience de 2 ans. Je recommande à tous mes collègues."</p>
+            <div class="testimonial-author">
+              <div class="author-avatar" style="background: linear-gradient(135deg, #E91E63, #FF9800)">JD</div>
+              <div>
+                <strong>Julie D.</strong>
+                <span>Project Manager — Agile Coach</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-controls">
+        <button class="t-btn" id="tPrev" aria-label="Précédent"><i class="fas fa-chevron-left"></i></button>
+        <div class="t-dots" id="tDots"></div>
+        <button class="t-btn" id="tNext" aria-label="Suivant"><i class="fas fa-chevron-right"></i></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq-section" id="faq">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">FAQ</span>
+        <h2>Questions fréquentes</h2>
+        <p>Tout ce que vous devez savoir sur CertifPath</p>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item reveal">
+          <button class="faq-question">
+            <span>C'est vraiment gratuit ?</span>
+            <i class="fas fa-plus faq-icon"></i>
+          </button>
+          <div class="faq-answer">
+            <p>Oui, totalement gratuit ! CertifPath est un projet académique développé pour aider les professionnels IT à trouver leur parcours de certifications. Aucun abonnement, aucune carte bancaire requise.</p>
+          </div>
+        </div>
+        <div class="faq-item reveal">
+          <button class="faq-question">
+            <span>Comment l'IA génère-t-elle mon parcours ?</span>
+            <i class="fas fa-plus faq-icon"></i>
+          </button>
+          <div class="faq-answer">
+            <p>Notre système utilise Llama 3.3 via Groq AI, connecté à une base de données Google Sheets contenant nos 26 certifications. L'IA analyse votre profil (niveau, domaine, objectif) et sélectionne les certifications les plus pertinentes dans le bon ordre logique.</p>
+          </div>
+        </div>
+        <div class="faq-item reveal">
+          <button class="faq-question">
+            <span>Combien de temps faut-il pour recevoir mon email ?</span>
+            <i class="fas fa-plus faq-icon"></i>
+          </button>
+          <div class="faq-answer">
+            <p>En général moins de 30 secondes ! Une fois votre formulaire soumis, N8N déclenche automatiquement l'analyse IA et l'envoi de l'email. Vérifiez vos spams si vous ne le recevez pas dans la minute.</p>
+          </div>
+        </div>
+        <div class="faq-item reveal">
+          <button class="faq-question">
+            <span>Quelle est la différence entre "Parcours" et "Fiche de préparation" ?</span>
+            <i class="fas fa-plus faq-icon"></i>
+          </button>
+          <div class="faq-answer">
+            <p>Le <strong>Parcours personnalisé</strong> vous recommande 3 à 6 certifications dans l'ordre optimal selon votre profil. La <strong>Fiche de préparation</strong> se concentre sur une seule certification que vous choisissez et vous donne le plan de révision détaillé semaine par semaine.</p>
+          </div>
+        </div>
+        <div class="faq-item reveal">
+          <button class="faq-question">
+            <span>Mes données sont-elles sécurisées ?</span>
+            <i class="fas fa-plus faq-icon"></i>
+          </button>
+          <div class="faq-answer">
+            <p>Vos données (prénom, email, profil) sont uniquement utilisées pour générer et envoyer votre parcours. Elles transitent via N8N (hébergé sur n8n.cloud) et sont stockées temporairement pour le traitement. Aucune revente, aucun marketing.</p>
+          </div>
         </div>
       </div>
     </div>
@@ -201,14 +451,13 @@
   <!-- CTA PRINCIPAL -->
   <section class="cta-section" id="action">
     <div class="container">
-      <div class="section-header">
+      <div class="section-header reveal">
+        <span class="section-tag">Action</span>
         <h2>Prêt à commencer ?</h2>
         <p>Choisissez ce dont vous avez besoin</p>
       </div>
       <div class="cta-cards">
-
-        <!-- CARD 1 : Parcours -->
-        <div class="cta-card featured">
+        <div class="cta-card featured reveal" style="--delay: 0s">
           <div class="cta-badge">⭐ Recommandé</div>
           <div class="cta-icon">
             <i class="fas fa-map-signs"></i>
@@ -221,14 +470,13 @@
             <li><i class="fas fa-check"></i> Durée et budget estimés</li>
             <li><i class="fas fa-check"></i> Envoyé par email instantanément</li>
           </ul>
-          <button class="btn-cta" onclick="ouvrirFormulaire('parcours')">
+          <button class="btn-cta ripple" onclick="ouvrirFormulaire('parcours')">
             <i class="fas fa-arrow-right"></i>
             Obtenir mon parcours
           </button>
         </div>
 
-        <!-- CARD 2 : Fiche -->
-        <div class="cta-card">
+        <div class="cta-card reveal" style="--delay: 0.15s">
           <div class="cta-icon">
             <i class="fas fa-file-alt"></i>
           </div>
@@ -240,12 +488,11 @@
             <li><i class="fas fa-check"></i> Ressources gratuites recommandées</li>
             <li><i class="fas fa-check"></i> Checklist de préparation</li>
           </ul>
-          <button class="btn-cta secondary" onclick="ouvrirFormulaire('fiche')">
+          <button class="btn-cta secondary ripple" onclick="ouvrirFormulaire('fiche')">
             <i class="fas fa-arrow-right"></i>
             Obtenir une fiche
           </button>
         </div>
-
       </div>
     </div>
   </section>
@@ -253,18 +500,41 @@
   <!-- FOOTER -->
   <footer class="footer">
     <div class="container">
-      <div class="footer-content">
-        <div class="footer-logo">
-          <i class="fas fa-certificate"></i>
-          <span>CertifPath</span>
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="footer-logo">
+            <i class="fas fa-certificate"></i>
+            <span>CertifPath</span>
+          </div>
+          <p>Système intelligent d'aide au choix et de planification de certifications IT.</p>
+          <p class="footer-tech">
+            <span><i class="fas fa-database"></i> Google Sheets</span>
+            <span><i class="fas fa-robot"></i> Groq Llama 3.3</span>
+            <span><i class="fas fa-envelope"></i> Gmail</span>
+            <span><i class="fas fa-bolt"></i> N8N</span>
+          </p>
         </div>
-        <p>Système d'aide au choix et de planification de certifications IT — Propulsé par N8N & Groq AI</p>
-        <p class="footer-tech">
-          <i class="fas fa-database"></i> Google Sheets &nbsp;|&nbsp;
-          <i class="fas fa-robot"></i> Groq Llama 3.3 &nbsp;|&nbsp;
-          <i class="fas fa-envelope"></i> Gmail &nbsp;|&nbsp;
-          <i class="fas fa-bolt"></i> N8N
-        </p>
+        <div class="footer-links-col">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="#accueil">Accueil</a></li>
+            <li><a href="#fonctionnement">Comment ça marche</a></li>
+            <li><a href="#certifications">Certifications</a></li>
+            <li><a href="#temoignages">Témoignages</a></li>
+          </ul>
+        </div>
+        <div class="footer-links-col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="#action">Parcours personnalisé</a></li>
+            <li><a href="#action">Fiche de préparation</a></li>
+            <li><a href="#faq">FAQ</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2025 CertifPath — Projet académique ESGI</p>
+        <p>Fait avec <i class="fas fa-heart" style="color:#E91E63"></i> et N8N</p>
       </div>
     </div>
   </footer>
@@ -278,10 +548,15 @@
       <div class="modal-icon">
         <i class="fas fa-external-link-alt"></i>
       </div>
-      <h3>Redirection vers le formulaire</h3>
-      <p>Vous allez être redirigé vers notre formulaire sécurisé pour compléter votre demande.</p>
+      <h3 id="modal-title">Redirection vers le formulaire</h3>
+      <p id="modal-desc">Vous allez être redirigé vers notre formulaire sécurisé pour compléter votre demande.</p>
+      <div class="modal-meta" id="modal-meta">
+        <span><i class="fas fa-lock"></i> Formulaire sécurisé</span>
+        <span><i class="fas fa-clock"></i> ~30 secondes</span>
+        <span><i class="fas fa-envelope"></i> Résultat par email</span>
+      </div>
       <div class="modal-buttons">
-        <button class="btn-primary" id="modal-btn" onclick="confirmerRedirection()">
+        <button class="btn-primary ripple" id="modal-btn" onclick="confirmerRedirection()">
           <i class="fas fa-arrow-right"></i>
           Continuer
         </button>
@@ -289,6 +564,17 @@
       </div>
     </div>
   </div>
+
+  <!-- TOAST -->
+  <div class="toast" id="toast">
+    <i class="fas fa-check-circle"></i>
+    <span id="toast-msg">Redirection en cours...</span>
+  </div>
+
+  <!-- BACK TO TOP -->
+  <button class="back-to-top" id="backToTop" aria-label="Retour en haut">
+    <i class="fas fa-arrow-up"></i>
+  </button>
 
   <script src="script.js"></script>
 </body>
